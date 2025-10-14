@@ -1,0 +1,15 @@
+package com.group10.furniture_store.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.group10.furniture_store.domain.User;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findUserById(long id);
+
+    User save(User x);
+}
