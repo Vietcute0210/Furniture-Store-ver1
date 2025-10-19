@@ -2,7 +2,6 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
             <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
             <!DOCTYPE html>
             <html lang="en">
             
@@ -25,43 +24,46 @@
                     <div id="layoutSidenav_content">
                         <main>
                             <div class="container-fluid px-4">
-                                <h1 class="mt-4">Manage Users</h1>
+                                <h1 class="mt-4">Manage Products</h1>
                                 <ol class="breadcrumb mb-4">
                                     <li class="breadcrumb-item active">Dashboard</li>
-                                    <li class="breadcrumb-item active">Users</li>
+                                    <li class="breadcrumb-item active">Products</li>
                                 </ol>
                             </div>
                             <div class="mt-5">
                                 <div class="row">
                                     <div class="col-12 mx-auto">
                                         <div class="d-flex justify-content-between">
-                                            <h3>Table users</h3>
-                                            <a href="/admin/user/create" class="btn btn-primary">Create an user</a>
+                                            <h3>Table products</h3>
+                                            <a href="/admin/product/create" class="btn btn-primary">Create a product</a>
                                         </div>
                                         <hr />
                                         <table class="table table-bordered table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Email</th>
-                                                    <th>FullName</th>
+                                                    <th>Name</th>
+                                                    <th>Price</th>
+                                                    <th>Factory</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach var="user" items="${users}">
+                                                <c:forEach var="product" items="${products}">
                                                     <tr>
-                                                        <th>${user.id}</th>
-                                                        <td>${user.email}</td>
-                                                        <td>${user.fullName}</td>
+                                                        <th>${product.id}</th>
+                                                        <td>${product.name}</td>
+                                                        <td>${product.price}</td>
+                                                        <td>${product.factory}</td>
                                                         <td>
-                                                            <a href="/admin/user/${user.id}" class="btn btn-success">
+                                                            <a href="/admin/product/${product.id}" class="btn btn-success">
                                                                 View
                                                             </a>
-                                                            <a href="/admin/user/update/${user.id}" class="btn btn-warning mx-2">
+                                                            <a href="/admin/product/update/${product.id}"
+                                                                class="btn btn-warning mx-2">
                                                                 Update
                                                             </a>
-                                                            <a href="/admin/user/delete/${user.id}" class="btn btn-danger">
+                                                            <a href="/admin/product/delete/${product.id}" class="btn btn-danger">
                                                                 Delete
                                                             </a>
                                                         </td>
@@ -78,7 +80,7 @@
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
                     crossorigin="anonymous"></script>
-                <script src="js/scripts.js"></script>
+                <script src="client/js/scripts.js"></script>
             
             </body>
             

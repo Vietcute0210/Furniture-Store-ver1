@@ -2,7 +2,6 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
             <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
             <!DOCTYPE html>
             <html lang="en">
             
@@ -12,17 +11,17 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta name="description" content="Furniture Store" />
                 <meta name="author" content="Furniture Store" />
-                <title>${user.fullName} - Furniture Store</title>
+                <title>${product.name} - Furniture Store</title>
                 <link href="/css/styles.css" rel="stylesheet" />
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
             
                 <script>
                     $(document).ready(() => {
-                        const avatarFile = $("#avatarFile");
-                        avatarFile.change(function (e) {
+                        const productFile = $("#productFile");
+                        productFile.change(function (e) {
                             const imgURL = URL.createObjectURL(e.target.files[0]);
-                            $("#avatarPreview").attr("src", imgURL);
-                            $("#avatarPreview").css({ "display": "block" });
+                            $("#productPreview").attr("src", imgURL);
+                            $("#productPreview").css({ "display": "block" });
                         });
                     });
                 </script>
@@ -39,23 +38,21 @@
                                 <div class="row">
                                     <div class="col-12 mx-auto">
                                         <div class="d-flex justify-content-between">
-                                            <h3>User Details with id = ${id}</h3>
+                                            <h3>Product Details with id = ${id}</h3>
                                         </div>
                                         <hr />
-                                        <div class="card" style="width: 60%;">
-                                            <img src="/images/avatar/${user.avatar}" alt="avatar-preview">
+                                        <div class="card" style="width: 60%">
+                                            <img src="/images/product/${product.image}" alt="product-preview">
                                             <div class="card-header">
-                                                User Information
+                                                Product Information
                                             </div>
                                             <ul class="list-group list-group-flush">
-                                                <li class="list-group-item">ID : ${id}</li>
-                                                <li class="list-group-item">Email : ${user.email} </li>
-                                                <li class="list-group-item">FullName : ${user.fullName}</li>
-                                                <li class="list-group-item">Address : ${user.address}</li>
-                                                <li class="list-group-item">Role : ${user.role.name}</li>
+                                                <li class="list-group-item">ID : ${product.id}</li>
+                                                <li class="list-group-item">Name : ${product.name}</li>
+                                                <li class="list-group-item">Price : ${product.price}</li>
                                             </ul>
                                         </div>
-                                        <a href="/admin/user" class="btn btn-success">BACK</a>
+                                        <a href="/admin/product" class="btn btn-success">BACK</a>
                                     </div>
                                 </div>
                             </div>
@@ -63,12 +60,9 @@
                         <jsp:include page="../layout/footer.jsp" />
                     </div>
                 </div>
-                <jsp:include page="../layout/footer.jsp" />
-            
-            
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
                     crossorigin="anonymous"></script>
-                <script src="/js/main.js"></script>
+                <script src="/client/js/main.js"></script>
             
             </body>
             

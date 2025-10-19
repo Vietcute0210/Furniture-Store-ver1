@@ -5,15 +5,19 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.group10.furniture_store.domain.Role;
 import com.group10.furniture_store.domain.User;
+import com.group10.furniture_store.repository.RoleRepository;
 import com.group10.furniture_store.repository.UserRepository;
 
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
     }
 
     public List<User> getAllUser() {
@@ -33,5 +37,9 @@ public class UserService {
 
     public void deleteAnUser(Long id) {
         this.userRepository.deleteById(id);
+    }
+
+    public Role getRoleByName(String name) {
+        return this.roleRepository.findByName(name);
     }
 }

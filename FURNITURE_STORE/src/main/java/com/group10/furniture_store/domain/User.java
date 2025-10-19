@@ -1,32 +1,64 @@
 package com.group10.furniture_store.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
+    @NotNull
+    @Email(message = "Email không hợp lệ", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String email;
+
+    @NotNull
+    @Size(min = 2, message = "Password phải có tối thiểu 2 ký tự")
     private String password;
+
+    @NotNull
+    @Size(min = 3, message = "Fullname phải có tối thiểu 3 ký tự")
     private String fullName;
+
     private String address;
     private String phone;
     private String avatar;
 
-    public Long getId() {
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
+
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", email=" + email + ", password=" + password + ", fullName=" + fullName
+                + ", address=" + address + ", phone=" + phone + ", avatar=" + avatar + "]";
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -78,4 +110,23 @@ public class User implements Serializable {
         this.avatar = avatar;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
 }
