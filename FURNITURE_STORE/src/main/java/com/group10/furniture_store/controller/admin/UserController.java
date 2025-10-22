@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +16,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.group10.furniture_store.domain.User;
 import com.group10.furniture_store.service.UserService;
+
+import jakarta.validation.Valid;
+
 import com.group10.furniture_store.service.UploadService;
 
 @Controller
@@ -27,11 +32,6 @@ public class UserController {
         this.userService = userService;
         this.uploadService = uploadService;
         this.passwordEncoder = passwordEncoder;
-    }
-
-    @GetMapping("/")
-    public String getHomePage(Model model) {
-        return "Duc dep trai heheheeh";
     }
 
     @GetMapping("/admin/user")
@@ -49,8 +49,20 @@ public class UserController {
 
     @PostMapping("/admin/user/create")
     public String createUserPage(Model model,
-            @ModelAttribute("newUser") User user,
+            @ModelAttribute("newUser") @Valid User user,
+            BindingResult result,
             @RequestParam("imageFile") MultipartFile file) {
+
+        // in ra lỗi nếu có
+        List<FieldError> errors = result.getFieldErrors();
+        for (FieldError error : errors) {
+            System.out.println("Field: " + error.getField() + " - Message: " + error.getDefaultMessage());
+        }
+        // nếu có lỗi thì trả về trang create user
+        if (result.hasErrors()) {
+            return "admin/user/create";
+        }
+
         String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
         String hashPassword = this.passwordEncoder.encode(user.getPassword());
 

@@ -19,7 +19,6 @@ import com.group10.furniture_store.service.UploadService;
 import jakarta.validation.Valid;
 
 @Controller
-
 public class ProductController {
     private final UploadService uploadService;
     private final ProductService productService;
@@ -31,7 +30,7 @@ public class ProductController {
 
     @GetMapping("/admin/product")
     public String getProduct(Model model) {
-        List<Product> products = this.productService.getAllProduct();
+        List<Product> products = this.productService.getAllProducts();
         model.addAttribute("products", products);
         return "admin/product/show";
     }

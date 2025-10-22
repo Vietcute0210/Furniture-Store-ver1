@@ -30,7 +30,7 @@ public class User implements Serializable {
     private String email;
 
     @NotNull
-    @Size(min = 2, message = "Password phải có tối thiểu 2 ký tự")
+    @Size(min = 6, message = "Password phải có tối thiểu 6 ký tự")
     private String password;
 
     @NotNull
@@ -47,6 +47,9 @@ public class User implements Serializable {
 
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
+
+    @OneToOne(mappedBy = "user")
+    private Cart cart;
 
     @Override
     public String toString() {
@@ -128,5 +131,13 @@ public class User implements Serializable {
 
     public static long getSerialversionuid() {
         return serialVersionUID;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 }

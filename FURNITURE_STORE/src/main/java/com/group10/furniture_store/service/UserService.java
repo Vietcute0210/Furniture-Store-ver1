@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.group10.furniture_store.domain.Role;
 import com.group10.furniture_store.domain.User;
+import com.group10.furniture_store.domain.DTO.RegisterDTO;
+import com.group10.furniture_store.repository.OrderRepository;
+import com.group10.furniture_store.repository.ProductRepository;
 import com.group10.furniture_store.repository.RoleRepository;
 import com.group10.furniture_store.repository.UserRepository;
 
@@ -14,10 +17,15 @@ import com.group10.furniture_store.repository.UserRepository;
 public class UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final ProductRepository productRepository;
+    private final OrderRepository orderRepository;
 
-    public UserService(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository,
+            ProductRepository productRepository, OrderRepository orderRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.productRepository = productRepository;
+        this.orderRepository = orderRepository;
     }
 
     public List<User> getAllUser() {
@@ -41,5 +49,32 @@ public class UserService {
 
     public Role getRoleByName(String name) {
         return this.roleRepository.findByName(name);
+    }
+
+    public User registerDTOToUser(RegisterDTO registerDTO) {
+        User user = new User();
+        user.setFullName(registerDTO.getFirstName() + " " + registerDTO.getLastName());
+        user.setEmail(registerDTO.getEmail());
+        return user;
+    }
+
+    public boolean checkEmailExist(String email) {
+        return this.userRepository.existsByEmail(email);
+    }
+
+    public User getUserByEmail(String email) {
+        return this.userRepository.findByEmail(email);
+    }
+
+    public long countUsers() {
+        return this.userRepository.count();
+    }
+
+    public long countProducts() {
+        return this.productRepository.count();
+    }
+
+    public long countOrders() {
+        return this.orderRepository.count();
     }
 }
