@@ -18,7 +18,6 @@
                 </head>
 
                 <body class="sb-nav-fixed">
-                    <!-- Cách này để tái sử dụng header bằng cách truy cập vào file header.jsp ở trong folder layout trong WEB-INF/view/dashboard, có thể search cả câu lệnh để đọc hiểu thêm -->
                     <jsp:include page="../layout/header.jsp" />
 
                     <div id="layoutSidenav">
@@ -27,9 +26,6 @@
                             <main>
                                 <div class="container-fluid px-4">
                                     <h1 class="mt-4">Manage Orders</h1>
-                                    <!-- cái breadcrumb này sẽ đóng vai trò điều hướng trang hiển thị như này :
-                                Home/Chi Tiết Sản Phẩm Mà lúc này khi bấm vào có thể chuyển qua chuyển lại (kiểu thế) 
-                                -->
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item">
@@ -85,6 +81,36 @@
                                                     </c:forEach>
                                                 </tbody>
                                             </table>
+
+                                            <nav aria-label="Page navigation">
+                                                <ul class="pagination justify-content-center">
+                                                    <li class="page-item">
+                                                        <a class="${1 eq currentPage ? 'disabled page-link' : 'page-link'}"
+                                                            href="/admin/order?page=${currentPage - 1}" aria-label="Previous">
+                                                            <span aria-hidden="true">&laquo;</span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </a>
+                                                    </li>
+                                            
+                                                    <c:forEach begin="0" end="${totalPages-1}" varStatus="loop">
+                                                        <li class="page-item">
+                                                            <a class="${loop.index + 1 eq currentPage ? 'active page-link' : 'page-link'}"
+                                                                href="/admin/order?page=${loop.index+1}">
+                                                                ${loop.index+1}
+                                                            </a>
+                                                        </li>
+                                                    </c:forEach>
+                                            
+                                                    <li class="page-item">
+                                                        <a class="${totalPages eq currentPage ? 'disabled page-link' : 'page-link'}"
+                                                            href="/admin/order?page=${currentPage + 1}" aria-label="Next">
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                            <span class="sr-only">Next</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+
                                         </div>
                                     </div>
                                 </div>

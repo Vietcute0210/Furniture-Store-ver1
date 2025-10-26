@@ -69,6 +69,34 @@
                                                 </c:forEach>
                                             </tbody>
                                         </table>
+
+                                        <nav aria-label="Page navigation">
+                                            <ul class="pagination justify-content-center">
+                                                <li class="page-item">
+                                                    <a class="${1 eq currentPage ? 'disabled page-link' : 'page-link'}"
+                                                        href="/admin/user?page=${currentPage - 1}" aria-label="Previous">
+                                                        <span aria-hidden="true">&laquo;</span>
+                                                        <span class="sr-only">Previous</span>
+                                                    </a>
+                                                </li>
+                                                <c:forEach begin="0" end="${totalPages - 1}" varStatus="loop">
+                                                    <li class="page-item">
+                                                        <a href="/admin/user?page=${loop.index+1}"
+                                                            class="${(loop.index + 1) eq currentPage ? 'active page-link' : 'page-link'}">
+                                                            ${loop.index+1}
+                                                        </a>
+                                                    </li>
+                                                </c:forEach>
+                                                <li class="page-item">
+                                                    <a class="${totalPages eq currentPage ? 'disabled page-link' : 'page-link'}"
+                                                        href="/admin/user?page=${currentPage + 1}" aria-label="Next">
+                                                        <span aria-hidden="true">&raquo;</span>
+                                                        <span class="sr-only">Next</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+
                                     </div>
                                 </div>
                             </div>

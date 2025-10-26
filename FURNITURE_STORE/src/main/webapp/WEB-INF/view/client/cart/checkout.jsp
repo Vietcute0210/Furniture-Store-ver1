@@ -116,16 +116,36 @@
                                                 <div class="row">
                                                     <div class="col-12 form-group mb-3">
                                                         <label>Tên người nhận</label>
-                                                        <input class="form-control" name="receiverName" required />
+                                                        <input class="form-control" name="receiverName" value="${fullName}" />
                                                     </div>
                                                     <div class="col-12 form-group mb-3">
                                                         <label>Địa chỉ người nhận</label>
-                                                        <input class="form-control" name="receiverAddress" required />
+                                                        <input class="form-control" name="receiverAddress" value="${detailAddress}" />
                                                     </div>
                                                     <div class="col-12 form-group mb-3">
                                                         <label>Số điện thoại</label>
-                                                        <input class="form-control" name="receiverPhone" required />
+                                                        <input id="phoneNumber" class="form-control" name="receiverPhone" required />
                                                     </div>
+                            
+                                                    <div class="col-12 form-group mb-3">
+                                                        <label>Hình thức thanh toán</label>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="paymentMethod" value="COD" id="COD"
+                                                                checked>
+                                                            <label class="form-check-label" for="COD">
+                                                                Thanh toán khi nhận hàng
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="paymentMethod" value="BANKING"
+                                                                id="BANKING">
+                                                            <label class="form-check-label" for="BANKING">
+                                                                Thanh toán bằng ví VNPAY
+                                                            </label>
+                                                        </div>
+                                                        <input style="display: none;" value="${totalPrice}" name="totalPrice">
+                                                    </div>
+                            
                                                     <div class="mt-4">
                                                         <i class="fas fa-arrow-left"></i>
                                                         <a href="/cart">Quay lại giỏ hàng</a>
@@ -139,11 +159,14 @@
                                                     <h1 class="display-6 mb-4">Thông Tin <span class="fw-normal">Thanh
                                                             Toán</span>
                                                     </h1>
-
+                            
                                                     <div class="d-flex justify-content-between">
                                                         <h5 class="mb-0 me-4">Phí vận chuyển</h5>
                                                         <div class="">
-                                                            <p class="mb-0">0 đ</p>
+                                                            <p class="mb-0">
+                            
+                                                                <fmt:formatNumber type="number" value="${cost}" /> đ
+                                                            </p>
                                                         </div>
                                                     </div>
                                                     <div class="mt-3 d-flex justify-content-between">
@@ -153,19 +176,18 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div
-                                                    class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                                                <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                                                     <h5 class="mb-0 ps-4 me-4">Tổng số tiền</h5>
                                                     <p class="mb-0 pe-4" data-cart-total-price="${totalPrice}">
                                                         <fmt:formatNumber type="number" value="${totalPrice}" /> đ
                                                     </p>
                                                 </div>
-
-                                                <button
+                            
+                                                <button id="confirm"
                                                     class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4">
                                                     Xác nhận thanh toán
                                                 </button>
-
+                            
                                             </div>
                                         </div>
                                     </div>

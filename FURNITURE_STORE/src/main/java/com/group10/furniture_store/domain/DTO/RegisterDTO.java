@@ -24,6 +24,8 @@ public class RegisterDTO {
 
     private String confirmPassword;
 
+    private String OTP;
+
     public String getFirstName() {
         return firstName;
     }
@@ -62,5 +64,13 @@ public class RegisterDTO {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public String getOTP() {
+        return OTP;
+    }
+
+    public void setOTP(String OTP) {
+        this.OTP = OTP;
     }
 }
