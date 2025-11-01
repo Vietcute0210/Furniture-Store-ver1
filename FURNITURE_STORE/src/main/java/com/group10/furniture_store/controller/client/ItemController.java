@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -23,23 +22,21 @@ import jakarta.servlet.http.HttpSession;
 import com.group10.furniture_store.domain.Cart;
 import com.group10.furniture_store.domain.CartDetails;
 import com.group10.furniture_store.domain.Product;
-import com.group10.furniture_store.domain.Product_;
 import com.group10.furniture_store.domain.User;
-import com.group10.furniture_store.domain.DTO.ProductCriteriaDTO;
 import com.group10.furniture_store.service.ProductService;
 import com.group10.furniture_store.service.UserService;
-import com.group10.furniture_store.service.sendEmail.SendEmail;
+import com.group10.furniture_store.service.sendEmail.SendEmailService;
 
 @Controller
 public class ItemController {
     private final ProductService productService;
     private final UserService userService;
-    private final SendEmail sendEmail;
+    private final SendEmailService sendEmailService;
 
-    public ItemController(ProductService productService, UserService userService, SendEmail sendEmail) {
+    public ItemController(ProductService productService, UserService userService, SendEmailService sendEmailService) {
         this.productService = productService;
         this.userService = userService;
-        this.sendEmail = sendEmail;
+        this.sendEmailService = sendEmailService;
     }
 
     @GetMapping("/product/{id}")
@@ -169,7 +166,7 @@ public class ItemController {
 
         User user = this.userService.getUserById(id);
         String email = user.getEmail();
-        sendEmail.sendEmail(email, "Xác nhận đơn hàng",
+        sendEmailService.sendEmail(email, "Xác nhận đơn hàng",
                 "Furniture Store chân thành cảm ơn bạn đã tin tưởng sử dụng sản phẩm của chúng tôi!");
         // if (vnpayResponseOptional.isPresent() && paymentRef.isPresent()) {
         // // update trạng thái cho order

@@ -20,9 +20,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.group10.furniture_store.domain.User;
 import com.group10.furniture_store.service.UserService;
+import com.group10.furniture_store.service.sendEmail.SendEmailToVerify;
 
 import jakarta.validation.Valid;
 
+import com.group10.furniture_store.service.TokenService;
 import com.group10.furniture_store.service.UploadService;
 
 @Controller
@@ -30,12 +32,16 @@ public class UserController {
     private final UserService userService;
     private final UploadService uploadService;
     private final PasswordEncoder passwordEncoder;
+    private final TokenService tokenService;
+    private final SendEmailToVerify sendEmailToVerify;
 
     public UserController(UserService userService, UploadService uploadService,
-            PasswordEncoder passwordEncoder) {
+            PasswordEncoder passwordEncoder, TokenService tokenService, SendEmailToVerify sendEmailToVerify) {
         this.userService = userService;
         this.uploadService = uploadService;
         this.passwordEncoder = passwordEncoder;
+        this.tokenService = tokenService;
+        this.sendEmailToVerify = sendEmailToVerify;
     }
 
     @GetMapping("/admin/user")

@@ -21,7 +21,7 @@ public class RegisterValidator implements ConstraintValidator<RegisterChecked, R
     public boolean isValid(RegisterDTO user, ConstraintValidatorContext context) {
         boolean valid = true;
         if (!user.getPassword().equals(user.getConfirmPassword())) {
-            context.buildConstraintViolationWithTemplate("Passwords must match")
+            context.buildConstraintViolationWithTemplate("Passwords nhập vào chưa khớp")
                     .addPropertyNode("confirmPassword")
                     .addConstraintViolation()
                     .disableDefaultConstraintViolation();

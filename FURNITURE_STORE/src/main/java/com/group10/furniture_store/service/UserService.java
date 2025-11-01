@@ -1,6 +1,5 @@
 package com.group10.furniture_store.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;

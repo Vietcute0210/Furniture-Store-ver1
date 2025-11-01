@@ -18,12 +18,19 @@ public class SendEmailToVerify {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendEmail(String toEmail, String subject, String body) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("furniturestoreonline247@gmail.com");
-        message.setTo(toEmail);
-        message.setSubject(subject);
-        message.setText(body);
-        mailSender.send(message);
+    public boolean sendEmail(String toEmail, String subject, String body) {
+        try {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom("furniturestoreonline247@gmail.com");
+            message.setTo(toEmail);
+            message.setSubject(subject);
+            message.setText(body);
+            mailSender.send(message);
+            return true;
+        } catch (Exception ex) {
+            System.out.println("Error sending email : " + ex.getMessage());
+            ex.printStackTrace();
+            return false;
+        }
     }
 }

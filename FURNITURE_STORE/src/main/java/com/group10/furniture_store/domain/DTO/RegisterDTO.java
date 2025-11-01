@@ -4,14 +4,15 @@ import com.group10.furniture_store.service.validator.RegisterChecked;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @RegisterChecked
 public class RegisterDTO {
-    @Size(min = 3, message = "First name phải có ít nhất 3 ký tự")
+    @NotNull
     private String firstName;
 
-    @Size(min = 3, message = "Last name phải có ít nhất 3 ký tự")
+    @NotNull
     private String lastName;
 
     @NotBlank(message = "Email không được bỏ trống")

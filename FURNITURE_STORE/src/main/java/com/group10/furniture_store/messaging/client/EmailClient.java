@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.group10.furniture_store.constant.AppConstant;
 import com.group10.furniture_store.messaging.message.EmailRequest;
-import com.group10.furniture_store.service.validator.SendEmailService;
+import com.group10.furniture_store.service.sendEmail.SendEmailService;
 
 @Component
 public class EmailClient {
