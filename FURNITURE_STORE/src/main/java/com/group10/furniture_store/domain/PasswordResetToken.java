@@ -23,7 +23,7 @@ public class PasswordResetToken implements Serializable {
 
     private String token;
 
-    @ManyToOne
+    @ManyToOne(fetch = jakarta.persistence.FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 

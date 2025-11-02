@@ -17,8 +17,8 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class TokenService {
-    public UserRepository userRepository;
-    public PasswordResetTokenRepository passwordResetTokenRepository;
+    private final UserRepository userRepository;
+    private final PasswordResetTokenRepository passwordResetTokenRepository;
 
     public boolean resetPassword(String email, String newPassword) {
         User user = this.userRepository.findByEmail(email);
@@ -31,6 +31,7 @@ public class TokenService {
     }
 
     // Tạo token để reset password
+    @Transactional
     public String createPasswordResetToken(User user) {
         // Xóa token cũ nếu có
         Optional<PasswordResetToken> existingToken = passwordResetTokenRepository.findByUser(user);

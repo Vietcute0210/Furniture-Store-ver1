@@ -11,10 +11,12 @@
                 <meta name="description" content="Reset Password - FURNITURE STORE" />
                 <meta name="author" content="" />
                 <title>Reset Password - FURNITURE STORE</title>
+                <link rel="preload" as="image" href="/images/background/background_image_for_login.jpg">
                 <link
                     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
                     rel="stylesheet">
                 <link rel="stylesheet" href="../css/resetPassword.css">
+                <link rel="stylesheet" href="../css/auth-common.css">
                 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
                 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
                 

@@ -43,19 +43,21 @@
                                     </div>
                                 </li>
                             
-                                <li><a class="dropdown-item" href="#">Quản lý tài khoản</a></li>
-                            
+                                <% if (session.getAttribute("role") !=null && session.getAttribute("role").equals("ADMIN")) { %>
+                                <li><a class="dropdown-item" href="/admin">Trang quản trị</a></li>
+                                <% } %>
+                                <li><a class="dropdown-item" href="/view-profile">Cập nhật thông tin cá nhân</a></li>
                                 <li><a class="dropdown-item" href="/order-history">Lịch sử mua hàng</a></li>
+                                <li><a class="dropdown-item" href="/change-password">Đổi mật khẩu</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li>
-                                    <!-- action="logout" đi kèm với method="post" này thằng Spring làm sẵn cho mình rồi , nên chỉ cần viết như này thôi và KHÔNG CẦN CAN THIỆP GÌ CẢ -->
-                                    <form action="/logout" method="post">
+                                    <form method="post" action="/logout">
                                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                         <button class="dropdown-item">Đăng xuất</button>
+                                    </form>                        
                                 </li>
-                                </form>
                             </ul>
                         </div>
                     </c:if>

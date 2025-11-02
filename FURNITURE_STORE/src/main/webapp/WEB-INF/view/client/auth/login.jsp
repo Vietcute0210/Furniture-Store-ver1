@@ -11,9 +11,11 @@
                 <meta name="description" content="Login to Furniture Store" />
                 <meta name="author" content="" />
                 <title>Login - FURNITURE STORE</title>
+                <link rel="preload" as="image" href="/images/background/background_image_for_login.jpg">
                 <link
                     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
                     rel="stylesheet">
+                <link rel="stylesheet" href="../css/auth-common.css">
                 <link rel="stylesheet" href="../css/login.css">
                 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
                 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>                
@@ -22,7 +24,7 @@
             <body>
             
                 <div class="wrapper ${param.register != null ? 'active' : ''}">
-                    <!-- Login Form -->
+                    <!-- Login -->
                     <div class="form-box login">
                         <h2>Login</h2>
                         <form method="post" action="/login">
@@ -55,7 +57,7 @@
 
                             <div class="remember">
                                 <label><input type="checkbox" name="remember-me">Remember me</label>
-                                <a href="${pageContext.request.contextPath}/forgot-password">Forgot Password?</a>
+                            <a href="${pageContext.request.contextPath}/forgot-password" class="small-link">Forgot password?</a>
                             </div>
 
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -70,7 +72,7 @@
                         </form>
                     </div>
 
-                    <!-- Register Form -->
+                    <!-- Register -->
                     <div class="form-box register">
                         <h2>Registration</h2>
                         <p style="text-align: center; color: #555; margin-bottom: 20px;">
