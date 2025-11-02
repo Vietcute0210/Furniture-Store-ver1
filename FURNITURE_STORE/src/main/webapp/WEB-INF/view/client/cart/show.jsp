@@ -24,6 +24,9 @@
                     <link href="/client/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
                     <link href="/client/css/bootstrap.min.css" rel="stylesheet">
                     <link href="/client/css/style.css" rel="stylesheet">
+                    <link href="/client/css/override.css" rel="stylesheet">
+                    <link href="/client/css/effects.css" rel="stylesheet">
+                    <link href="/client/css/order.css" rel="stylesheet">
                     <meta name="_csrf" content="${_csrf.token}" />
                     <meta name="_csrf_header" content="${_csrf.headerName}" />
                     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css"
@@ -216,6 +219,9 @@
                     <script src="/client/lib/lightbox/js/lightbox.min.js"></script>
                     <script src="/client/lib/owlcarousel/owl.carousel.min.js"></script>
                     <script src="/client/js/main.js"></script>
+                    <script src="/client/js/effects.js"></script>
+                    <script src ="/client/js/cart.js"></script>
+
                     <script
                         src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
 

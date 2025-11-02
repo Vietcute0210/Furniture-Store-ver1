@@ -29,6 +29,11 @@
                     <link href="/client/css/bootstrap.min.css" rel="stylesheet">
 
                     <link href="/client/css/style.css" rel="stylesheet">
+
+                    <link href="/client/css/override.css" rel="stylesheet">
+                    <link href="/client/css/effects.css" rel="stylesheet">
+                    <link href="/client/css/order.css" rel="stylesheet">
+                    <link href="/client/css/product_list.css" rel="stylesheet">
                     <style>
                         .page-link.disabled {
                             color: var(--bs-pagination-disabled-color);
@@ -291,6 +296,9 @@
                     <script src="/client/lib/owlcarousel/owl.carousel.min.js"></script>
 
                     <script src="/client/js/main.js"></script>
+                    <script src="/client/js/effects.js"></script>
+                    <script src="/client/js/cart_fly.js"></script>
+                    <script src="/client/js/product_detail.js"></script>
                 </body>
 
                 </html>

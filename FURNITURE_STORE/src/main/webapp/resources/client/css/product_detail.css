@@ -1,0 +1,72 @@
+.product-image-container {
+  position: relative;
+  perspective: 1000px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fffdf7;
+  box-shadow: 0 6px 20px rgba(255, 181, 36, 0.2);
+  transition: transform 0.4s ease;
+}
+
+.product-image-container:hover {
+  transform: scale(1.02);
+}
+
+/* Ảnh 3D xoay */
+/* .product-3d {
+  width: 100%;
+  transform-style: preserve-3d;
+  animation: rotateY 20s linear infinite;
+}
+
+@keyframes rotateY {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+} */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btnAddToCartDetail {
+  border: 2px solid #ffb524;
+  color: #81c408;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btnAddToCartDetail:hover {
+  background: linear-gradient(90deg, #ffb524, #ffc94f);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 181, 36, 0.4);
+}
+
+@media (max-width: 768px) {
+  .product-image-container {
+    margin-bottom: 20px;
+  }
+}
+
+.col-lg-6 {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  padding: 20px 25px;
+}
+@media (max-width: 992px) {
+  .col-lg-6 {
+    padding: 15px 20px;
+  }
+}
